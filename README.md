@@ -1,4 +1,4 @@
-# FortiGate VLAN Tool — GitHub Actions 自動部署
+# CS KPI — GitHub Actions 自動部署
 
 ## 目錄結構
 
