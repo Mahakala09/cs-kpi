@@ -40,19 +40,19 @@ git push origin main
 在任何機器上運行：
 docker build -t fortigate-vlan-tool:latest .
 bash# 直接拉取運行，端口 8088
-docker run -d -p 8088:80 你的用戶名/fortigate-vlan-tool:latest
+docker run -d -p 8088:80 你的用戶名/cs-kpi:latest
 
 # 訪問
 http://localhost:8088
 用 docker-compose（推薦）：
-yamlservices:
-  fortigate-tool:
-    image: 你的用戶名/fortigate-vlan-tool:latest
+services:
+  cs-kpi:
+    image: 你的用戶名/cs-kpi:latest
     ports:
-      - "8080:80"
+      - "9080:80"
     restart: unless-stopped
 
-cd /data/github/fortigate-vlan-tool
+cd /data/github/cs-kpi
 
 # 第一次 或 代碼更新後：build + 啟動
 docker-compose up -d --build
