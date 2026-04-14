@@ -3,7 +3,7 @@
 ## 目錄結構
 
 ```
-fortigate-vlan-tool/
+cs-kpi/
 ├── .github/workflows/docker.yml  ← Actions 自動 build
 ├── src/App.tsx                   ← 工具主程序
 ├── src/main.tsx
