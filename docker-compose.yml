@@ -1,0 +1,10 @@
+services:
+  cs-kpi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cs-kpi:latest
+    container_name: cs-kpi
+    ports:
+      - "9080:80"
+    restart: unless-stopped
