@@ -1,0 +1,33 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main          # 推送到 main 分支時自動觸發
+  workflow_dispatch:  # 允許手動觸發
+
+jobs:
+  deploy:
+    name: Build & Deploy to Server
+    runs-on: self-hosted   # 使用你自己的 EC2 runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Pull latest code
+        run: |
+          git pull origin main
+
+      - name: Build and restart Docker container
+        run: |
+          cd ${{ github.workspace }}
+          docker compose down
+          docker compose build --no-cache
+          docker compose up -d
+
+      - name: Verify deployment
+        run: |
+          sleep 5
+          docker compose ps
+          echo "✅ Deployment complete"
